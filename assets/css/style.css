@@ -1,0 +1,34 @@
+body{
+	background-color: CB99C9
+}
+#title {
+	 color: #CEF0D4;
+	 font-family: 'Rouge Script', cursive; 
+	 font-size: 75px;
+	 font-weight: normal;
+	 margin: 0px 330px 20px;
+	 text-align: center;
+	 text-shadow: 1px 1px 2px #082b34;
+	 border: white;
+	 border-style: dashed;
+	 padding: 5px;
+	}
+h1{
+font-family: 'Droid serif', serif, bold;
+font-size: 22px;
+color: white;
+}
+#game-rules{
+	float:right;
+}
+#image{
+	border: white;
+	border-style: dashed;
+	padding: 5 0 5 5px;
+}
+
+#game-rules{
+	border:white;
+	border-style: dashed;
+	padding:5 5 5 0px;
+}
