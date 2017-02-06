@@ -100,23 +100,129 @@
 //2) reset any counters for wrong guesses
 //3) reset correct options
 //4) reset display of word and reset display of the image
-
-var princess = ["belle"];
-var correctoptions= princess[0].split("");
-
+var wordlist= ["princess", "belle", "ariel", "cinderella"];
+var storeguesses = [];
+var maxwrongguesses = 5;
+var remainingguesses = maxwrongguesses;
 var userpoints=0;
 var lives=5;
+var correctoptions;
+var displayletters;
 
-document.onkeyup = function(event) {
 
-    var userGuess = event.key;
+correctoptions = wordlist[0].split("");
 
-    if (correctoptions.search(userGuess) >= 0){
-    	userpoints++; 
-    	document.getElementById("princessword").innerHTML = userGuess;
-    }  
-    else (
-    	lives=--; 
-    	document.getElementById("letters-guessed").innerHTML = lives;
-    	)
+document.onkeyup = function(event) 
+ 	{
+	var userGuess = event.key.toLowerCase();
+	displayletters = [];
+	var foundGuess = false;
+	storeguesses.push(userGuess);
+ 	for (var i = 0; i < correctoptions.length; i++)
+ 	{
+ 		//check for a match in the chosenword
+ 		if (userGuess.toLowerCase() === correctoptions[i].toLowerCase())
+	 	{
+	 		foundGuess = true;
+	 	}
+	 	else{
+	 		
+	 		
+	 	}
+ 	}
+ 	if(foundGuess){
+ 		
+ 	}
+ 	else{
+ 		remainingguesses--;
+ 	}
+ 	var countCorrectness = 0;
+
+	for(var i = 0; i < correctoptions.length; i++){
+		var foundLetter = false;
+		for(var j =0; j < storeguesses.length; j++){
+			if(storeguesses[j].toLowerCase() === correctoptions[i].toLowerCase()){
+				foundLetter = true;
+			}
+		}
+		if(foundLetter){
+			countCorrectness++;
+			displayletters.push(correctoptions[i]);
+		}
+		else
+		{
+			displayletters.push("_");
+		}
+	}
+ 	//update the display
+ 	document.getElementById("word").innerHTML = displayletters.join(" ");
 }
+
+var countCorrectness = 0;
+displayletters = [];
+for(var i = 0; i < correctoptions.length; i++){
+	var foundLetter = false;
+	for(var j =0; j < storeguesses.length; j++){
+		if(storeguesses[j].toLowerCase() === correctoptions[i].toLowerCase()){
+			foundLetter = true;
+		}
+	}
+	if(foundLetter){
+		countCorrectness++;
+		displayletters.push(correctoptions[i]);
+	}
+	else
+	{
+		displayletters.push("_");
+	}
+}
+ document.getElementById("word").innerHTML = displayletters.join(" ");
+
+ function startUp()
+ {	
+ 	var userpoints=0;
+	var lives=5;
+ 	var randomWord = wordlist[Math.floor(Math.random() * wordlist.length)];
+ 	var letter = document.getElementById("word").value;
+ 	//for var i
+ 	
+}
+//  	else 
+//  	{letters-guessed.push(i);
+//  		document.getElementById("letters-guessed").innerHTML =s;
+//  	}
+// }
+
+ function Letter()
+ {
+ 	var letter = document.getElementById("word").value;
+ 	if (letter.length>0)
+ 	{
+ 		for (var i = 0; i < randomWord.length; i++)
+ 			if (randomWord[i] === letter)
+ 			{
+ 				answerArray[i] = letter;
+ 			}
+ 	}
+ }
+ // count++;
+ // document.getElementById("princesspoints").innerHTML = "Points:" + count;
+ // document.getElementById()
+
+
+// var princess = ["belle"];
+// var correctoptions= princess[0].split("");
+
+// document.onkeyup = function(event) {
+
+//     var userGuess = event.key;
+
+//     if (correctoptions.search(userGuess) >= 0){
+//     	userpoints++; 
+//     	document.getElementById("princessword").innerHTML = userGuess;
+//     }  
+//     else (
+//     	lives=--; 
+//     	document.getElementById("letters-guessed").innerHTML = lives;
+//     	)
+// }
